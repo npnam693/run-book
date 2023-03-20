@@ -5,7 +5,6 @@ import { useState } from 'react'
 import {Dimensions} from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 const dataOnboarding = [
     {
         title :'Find walking buddy',
@@ -24,7 +23,7 @@ const dataOnboarding = [
     }
 ]
 
-export default function Onboarding(){
+export default function Onboarding({navigation }){
     const [index, setIndex] = useState(0)
     return (
         <View style = {styles.container}>
@@ -57,7 +56,7 @@ export default function Onboarding(){
                 index != 2 ? (
                     <View style={{bottom: -70, minHeight: 100}}>
                         <TouchableOpacity onPress={() => {
-                            setIndex(index  + 1)
+                            setIndex(index + 1)
                             if (index == 2) setIndex(0)}
                         }>
                             <View style={styles.buttonNext}>
@@ -68,7 +67,7 @@ export default function Onboarding(){
                     </View>
                 ) : (
                     <View style={{bottom: -100, minHeight: 100}}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.replace('Home')}>
                             <View style={{backgroundColor:'#3E4F88', width: windowWidth-100, paddingVertical: 10, alignItems:'center', borderRadius:10}}>
                                     <Text style = {{color: 'white', fontWeight:'700', fontSize:18}}>Get Started</Text>
                             </View>
