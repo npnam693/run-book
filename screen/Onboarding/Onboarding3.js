@@ -59,7 +59,7 @@ export default function Onboarding3({navigation}){
 
                         navigation.reset({
                             index: 0,
-                            routes: [{ name: 'Home' }],
+                            routes: [{ name: 'StackHomeScreen' }],
                         })
                         }
 
