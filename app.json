@@ -28,11 +28,11 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "extra": {
-      "eas": {
-        "projectId": "42a09b5d-15ee-4713-8fa2-63017ad09d38"
-      }
-    },
-    "owner": "nam693"
+    // "extra": {
+    //   "eas": {
+    //     "projectId": "42a09b5d-15ee-4713-8fa2-63017ad09d38"
+    //   }
+    // },
+    // "owner": "nam693"
   }
 }

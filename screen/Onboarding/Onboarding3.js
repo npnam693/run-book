@@ -57,11 +57,13 @@ export default function Onboarding3({navigation}){
                     <View style={{bottom: -120, minHeight: 120}}>
                         <TouchableOpacity onPress={() => {
 
-                        navigation.reset({
-                            index: 0,
-                            routes: [{ name: 'Home' }],
-                        })
+                        // navigation.reset({
+                        //     index: 0,
+                        //     routes: [{ name: 'StackHomeScreen' }],
+                        // })
+                                navigation.navigate('StackHomeScreen')
                         }
+                        
 
                         }>
                             <View style={{backgroundColor:'#3E4F88', width: windowWidth-100, paddingVertical: 10, alignItems:'center', borderRadius:10}}>
