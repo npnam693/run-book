@@ -2,7 +2,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Animated, StyleSheet, View, Dimensions, Text, Pressable } from 'react-native';
 import LottieView from 'lottie-react-native';
 
-export default function App({navigation}) {
+
+export default function Home({navigation}) {
     const animation = useRef(null);
     return (
     <View style={styles.animationContainer}>
@@ -20,21 +21,16 @@ export default function App({navigation}) {
         <Text style = {styles.logo}>RunMate</Text>
         
         <View style={styles.actionContainer}>
-                <Pressable style={styles.button} onPress={() => navigation.navigate('SignIn')}>
+            <Pressable style={styles.button} onPress={() => navigation.navigate('SignIn')}>
                 <Text style={styles.text}>Sign In</Text>
             </Pressable>
-            <Pressable style={styles.button} onPress={() => console.log('Hello')}>
+            <Pressable style={styles.button} onPress={() => navigation.navigate('SignUp')}>
                 <Text style={styles.text}>Create account</Text>
             </Pressable>
         </View>
-
-            
     </View>
     );
 }
-
-
-
 
 
 const styles = StyleSheet.create({
@@ -47,8 +43,11 @@ const styles = StyleSheet.create({
         paddingTop: 20,
     },
     logo: {
-        fontSize: 20,
+        fontSize: 24,
+        fontWeight: 700,
         marginBottom: 50,
+        letterSpacing: 1,
+
     },
     button: {
         alignItems: 'center',
@@ -67,5 +66,4 @@ const styles = StyleSheet.create({
         letterSpacing: 0.25,
         color: 'white',
       },
-  
 });

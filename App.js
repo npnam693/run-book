@@ -11,36 +11,63 @@ import Onboarding3 from './screen/Onboarding/Onboarding3';
 import Home from './screen/Home';
 import SignIn from './screen/Authentication/SignIn';
 import SignUp from './screen/Authentication/SignUp';
+import HomeLogin from './screen/HomeLogIn';
+import { useState } from 'react';
 
 const StackOnboarding = createMaterialTopTabNavigator();
-const StackHome = createMaterialTopTabNavigator();
+const StackHome = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
+
 
 
 function StackHomeScreen() {
   return (
-    <StackOnboarding.Navigator options={{ tabBarShowLabel: false}} tabBar={() => <View></View>} >
-      <StackOnboarding.Screen name="Home" component={Home} options = {{tabBarShowLabel: false, cardOverlayEnabled: false, animation: 'none'}}/>
-      <StackOnboarding.Screen name="SignIn" component={SignIn} options={{ tabBarShowLabel: false, cardOverlayEnabled: false, animation: 'none'}}/>
-      <StackOnboarding.Screen name="SignUp" component={SignUp} options={{ tabBarShowLabel: false, cardOverlayEnabled: false, animation: 'none'}}/>
-    </StackOnboarding.Navigator>
-  )
-}
-function StackOnboardingScreen() {
-  return (
     <StackHome.Navigator options={{ tabBarShowLabel: false}} tabBar={() => <View></View>} >
-      <StackHome.Screen name="Onboarding1" component={Onboarding1} options = {{tabBarShowLabel: false, cardOverlayEnabled: false, animation: 'none'}}/>
-      <StackHome.Screen name="Onboarding2" component={Onboarding2} options={{ tabBarShowLabel: false, cardOverlayEnabled: false, animation: 'none'}}/>
-      <StackHome.Screen name="Onboarding3" component={Onboarding3} options={{ tabBarShowLabel: false, cardOverlayEnabled: false, animation: 'none'}}/>
+      <StackHome.Screen name="Home" component={Home} options = {{headerShown: false}}/>
+      <StackHome.Screen name="SignIn" component={SignIn} options={{ headerShown: false}}/>
+      <StackHome.Screen name="SignUp" component={SignUp} options={{ headerShown: false}}/>
+      <StackHome.Screen name="HomeLogin" component={HomeLogin} options={{ headerShown: false}}/>
     </StackHome.Navigator>
   )
 }
 
+function StackOnboardingScreen() {
+  return (
+    <StackOnboarding.Navigator options={{ tabBarShowLabel: false}} tabBar={() => <View></View>} >
+      <StackOnboarding.Screen name="Onboarding1" component={Onboarding1} options = {{tabBarShowLabel: false, cardOverlayEnabled: false, animation: 'none'}}/>
+      <StackOnboarding.Screen name="Onboarding2" component={Onboarding2} options={{ tabBarShowLabel: false, cardOverlayEnabled: false, animation: 'none'}}/>
+      <StackOnboarding.Screen name="Onboarding3" component={Onboarding3} options={{ tabBarShowLabel: false, cardOverlayEnabled: false, animation: 'none'}}/>
+    </StackOnboarding.Navigator>
+  )
+}
+
 export default function App() {
+  const getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('joined')
+      if(value !== null) {
+        await AsyncStorage.setItem('joined', 1)
+        setObshow(true)
+      }   
+      else {
+        setObshow(false)
+      }
+    } catch(e) {
+    }
+  }
+
+  const [obshow, setObshow] = useState(true)
+  getData()
+  console.log(obshow)
+
+  
   return (
     <NavigationContainer>
       <Stack.Navigator >
-        <Stack.Screen name="StackOnboardingScreen" component={StackOnboardingScreen} options={{ headerShown: false }}/>
+        {
+          obshow &&
+          <Stack.Screen name="StackOnboardingScreen" component={StackOnboardingScreen} options={{ headerShown: false }} />
+        }
         <Stack.Screen name="StackHomeScreen" component={StackHomeScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
