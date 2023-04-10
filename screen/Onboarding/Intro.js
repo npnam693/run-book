@@ -1,12 +1,13 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Animated, StyleSheet, View, Dimensions } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { Button, StyleSheet, View, Dimensions } from 'react-native';
 import LottieView from 'lottie-react-native';
 
 export default function App() {
   const animation = useRef(null);
-    const [widthH, setWidthH] = useState(Dimensions.get('window').width - 300)
-    
-    setTimeout(() => setWidthH(Dimensions.get('window').width+300), 500)
+  useEffect(() => {
+    // You can control the ref programmatically, rather than using autoPlay
+    // animation.current?.play();
+  }, []);
 
   return (
     <View style={styles.animationContainer}>
@@ -14,12 +15,12 @@ export default function App() {
         autoPlay
         ref={animation}
         style={{
-          width: widthH,
+          width: Dimensions.get('window').width,
         //   height: 200,
           backgroundColor: '#eee',
         }}
         // Find more Lottie files at https://lottiefiles.com/featured
-        source={require('../assets/lottie/running-men.json')}
+        source={require('../../assets/lottie/running-men.json')}
       />
     </View>
   );

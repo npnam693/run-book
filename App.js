@@ -1,15 +1,18 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { View } from 'react-native';
 import Onboarding1 from './screen/Onboarding/Onboarding1';
 import Onboarding2 from './screen/Onboarding/Onboarding2';
 import Onboarding3 from './screen/Onboarding/Onboarding3';
 import Home from './screen/Home';
 
+import Intro from './screen/Onboarding/Intro'
 const StackOnboarding = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
+
 
 function StackOnboardingScreen() {
   return (
@@ -29,6 +32,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
+    // <Intro /> 
   );
 }
 
