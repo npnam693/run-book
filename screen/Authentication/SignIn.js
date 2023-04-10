@@ -16,12 +16,12 @@ export default function SignIn({navigation}){
     return (
         <View style={styles.container}>
                 <View style={styles.groupInput}>
-                    <Text>Email</Text>
+                    <Text style={styles.title}>Email</Text>
                     <Input
                         placeholder='Email'
                         leftIcon={
                             <Icon
-                                name='user'
+                                name='mail'
                                 size={24}
                                 color='black'
                             />
@@ -31,7 +31,7 @@ export default function SignIn({navigation}){
                     />
                 </View>
                 <View style={styles.groupInput}>
-                    <Text>Password</Text>
+                    <Text style={styles.title}>Password</Text>
                     <Input
                         placeholder='Password'
                         leftIcon={
@@ -47,7 +47,8 @@ export default function SignIn({navigation}){
                 </View>
             <Button title='login' buttonStyle = {{
                 marginTop: 10,
-                borderRadius: 10
+                borderRadius: 10,
+                size: 'large'
             }}
                 onPress={handleSubmit}
             />
@@ -62,6 +63,7 @@ export default function SignIn({navigation}){
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 20,
         flex: 1,
         alignItems: 'center',
         width: '100%'
@@ -71,6 +73,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         display: 'flex',
         width: '100%',
+    },
+    title: {
+        fontSize: 20
     }
 
 })
