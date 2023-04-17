@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
@@ -8,12 +7,8 @@ export default function QRcode() {
     const [scanned, setScanned] = useState(false);
     const [data, setData] = useState({ data: '', type: '', isIDstudent: '' })
 
-    const isValidateCode(code){
-        return String(code)
-            .match(
-                /([1][6-9][0-9]{5})|([2][0-2][0-9]{5})/
-            );
-    };
+    const isValidCode = (data) => {
+        return String(data).match(/([1][6-9][0-9]{5})|([2][0-2][0-9]{5})/)
     }
 
     // useEffect(() => {
@@ -52,16 +47,17 @@ export default function QRcode() {
                         alignItems: 'center',
                         padding: 20
                     }}>
-                        (isValidateCode(data.data ? ({
-                            <View style={{ width: 300, marginBottom: 50 }}>
-                                <Text style={{ fontSize: 20 }}>Bar code has been scanned!</Text>
-                                <Text style={{ fontSize: 20 }}>Type: {data.type}</Text>
-                                <Text style={{ fontSize: 20 }}>Data: {data.data}</Text>
-                                <Text style={{ fontSize: 20, color: 'blue' }}>Data: {data.data}</Text>
-                            </View>
-                        }) : (<Text>
-                            Invalid data
-                        </Text>)))
+                        <View style={{ width: 300, marginBottom: 50 }}>
+                            {isValidCode(data.data) ? (
+                                <>
+                                    <Text style={{ fontSize: 20 }}>Bar code has been scanned!</Text>
+                                    <Text style={{ fontSize: 20 }}>Type: {data.type}</Text>
+                                    <Text style={{ fontSize: 20, color: 'blue' }}>Data: {data.data}</Text>
+                                </>
+                            ) : (
+                                <Text style={{ fontSize: 20, color: 'red' }}>Invalid code: {data.data}</Text>
+                            )}
+                        </View>
                         <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />
 
                     </View>
