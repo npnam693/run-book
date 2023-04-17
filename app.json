@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "run-book",
-    "slug": "runmate",
+    "slug": "mobiledev1704",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -12,7 +12,7 @@
       "backgroundColor": "#ffffff"
     },
     "assetBundlePatterns": [
-      "**/*"
+      "*/"
     ],
     "ios": {
       "supportsTablet": true
