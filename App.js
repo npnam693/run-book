@@ -12,6 +12,7 @@ import Home from './screen/Home';
 import SignIn from './screen/Authentication/SignIn';
 import SignUp from './screen/Authentication/SignUp';
 import HomeLogin from './screen/HomeLogIn';
+import QRcode from './screen/QRcode';
 import { useState } from 'react';
 
 const StackOnboarding = createMaterialTopTabNavigator();
@@ -27,6 +28,7 @@ function StackHomeScreen() {
       <StackHome.Screen name="SignIn" component={SignIn} options={{ headerShown: false}}/>
       <StackHome.Screen name="SignUp" component={SignUp} options={{ headerShown: false}}/>
       <StackHome.Screen name="HomeLogin" component={HomeLogin} options={{ headerShown: false}}/>
+      <StackHome.Screen name="QRcode" component={QRcode} options={{ headerShown: false }} />
     </StackHome.Navigator>
   )
 }

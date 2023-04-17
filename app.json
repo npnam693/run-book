@@ -15,8 +15,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.nam693.runmate"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
@@ -28,17 +27,17 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "extra": {
-      "eas": {
-        "projectId": "5f08bf46-324c-4489-8dc7-df8caae53245"
-      }
-    },
-    "owner": "nam693",
-    "runtimeVersion": {
-      "policy": "sdkVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/5f08bf46-324c-4489-8dc7-df8caae53245"
-    }
+    // "extra": {
+    //   "eas": {
+    //     "projectId": "5f08bf46-324c-4489-8dc7-df8caae53245"
+    //   }
+    // },
+    // "owner": "nam693",
+    // "runtimeVersion": {
+    //   "policy": "sdkVersion"
+    // },
+    // "updates": {
+    //   "url": "https://u.expo.dev/5f08bf46-324c-4489-8dc7-df8caae53245"
+    // }
   }
 }
