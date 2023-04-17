@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
@@ -5,19 +6,30 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 export default function QRcode() {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
+    const [data, setData] = useState({ data: '', type: '', isIDstudent: '' })
 
-    useEffect(() => {
-        const getBarCodeScannerPermissions = async () => {
-            const { status } = await BarCodeScanner.requestPermissionsAsync();
-            setHasPermission(status === 'granted');
-        };
+    const isValidateCode(code){
+        return String(code)
+            .match(
+                /([1][6-9][0-9]{5})|([2][0-2][0-9]{5})/
+            );
+    };
+    }
 
-        getBarCodeScannerPermissions();
-    }, []);
+    // useEffect(() => {
+    const getBarCodeScannerPermissions = async () => {
+        const { status } = await BarCodeScanner.requestPermissionsAsync();
+        setHasPermission(status === 'granted');
+    };
+
+    getBarCodeScannerPermissions();
+    // }, []);/
 
     const handleBarCodeScanned = ({ type, data }) => {
+
+        setData({ type, data, })
         setScanned(true);
-        alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+        // alert(Bar code with type ${type} and data ${data} has been scanned!);
     };
 
     if (hasPermission === null) {
@@ -33,27 +45,39 @@ export default function QRcode() {
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={StyleSheet.absoluteFillObject}
             />
-            {scanned && <Button style={styles.button} title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+            {
+                scanned ?
+                    <View style={{
+                        backgroundColor: 'white',
+                        alignItems: 'center',
+                        padding: 20
+                    }}>
+                        (isValidateCode(data.data ? ({
+                            <View style={{ width: 300, marginBottom: 50 }}>
+                                <Text style={{ fontSize: 20 }}>Bar code has been scanned!</Text>
+                                <Text style={{ fontSize: 20 }}>Type: {data.type}</Text>
+                                <Text style={{ fontSize: 20 }}>Data: {data.data}</Text>
+                                <Text style={{ fontSize: 20, color: 'blue' }}>Data: {data.data}</Text>
+                            </View>
+                        }) : (<Text>
+                            Invalid data
+                        </Text>)))
+                        <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />
+
+                    </View>
+                    :
+                    <View>
+
+                    </View>
+            }
         </View>
     );
 }
 
-const styles = StyleSheet.create({ 
+const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        backgroundColor: 'transparent',
-        position: 'relative',
+        flexDirection: 'column',
+        justifyContent: 'center',
     },
-    absoluteFillObject: {
-        position: 'absolute',
-        flex: 1,
-        borderRadius: 20
-    },
-    button: {
-        position: 'absolute',
-        bottom: 50,
-        zIndex: 1
-    }
-}); 
+});
