@@ -16,7 +16,7 @@ export default function Home({ navigation }) {
                     marginTop: 20,
                 }}
                 // Find more Lottie files at https://lottiefiles.com/featured
-                source={require('../assets/lottie/running.json')}
+                source={require('../assets/lottie/running-men.json')}
             />
 
             <Text style={styles.logo}>RunMate</Text>

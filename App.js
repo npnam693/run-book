@@ -28,7 +28,7 @@ function StackHomeScreen() {
       <StackHome.Screen name="SignIn" component={SignIn} options={{ headerShown: false}}/>
       <StackHome.Screen name="SignUp" component={SignUp} options={{ headerShown: false}}/>
       <StackHome.Screen name="HomeLogin" component={HomeLogin} options={{ headerShown: false}}/>
-      <StackHome.Screen name="QRcode" component={QRcode} options={{ headerShown: false }} />
+      <StackHome.Screen name="QRcode" component={QRcode} options={{ headerShown: false, tabBarShowLabel: false, cardOverlayEnabled: false }} />
     </StackHome.Navigator>
   )
 }

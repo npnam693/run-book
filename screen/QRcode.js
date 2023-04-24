@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, Dimensions } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 export default function QRcode() {
@@ -39,7 +39,11 @@ export default function QRcode() {
             <BarCodeScanner
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={StyleSheet.absoluteFillObject}
-            />
+            >
+                <View style={styles.borderBarcode}>
+
+                </View>
+            </BarCodeScanner>
             {
                 scanned ?
                     <View style={{
@@ -76,4 +80,24 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
     },
+    absoluteFillObject: {
+        position: 'relative',
+        height: 400,
+        width: 400,
+        overflow: 'hidden',
+    },
+    borderBarcode: {
+        backgroundColor: 'transparent',
+        position: 'absolute',
+        zIndex: 2,
+        width: 250,
+        height: 250,
+        borderRadius: 20,
+        top: '50%',
+        left: '50%',
+        transform: [{ translateX: -125 }, { translateY: -125 }],
+        borderWidth: 6,
+        borderColor: 'white',
+        borderStyle: 'dashed',
+    }
 });
