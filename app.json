@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/running-woman-and-man-1.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,22 +22,22 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.nam693.runmate"
+      "package": "com.Nhom7.runmate"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    // "extra": {
-    //   "eas": {
-    //     "projectId": "5f08bf46-324c-4489-8dc7-df8caae53245"
-    //   }
-    // },
-    // "owner": "nam693",
-    // "runtimeVersion": {
-    //   "policy": "sdkVersion"
-    // },
-    // "updates": {
-    //   "url": "https://u.expo.dev/5f08bf46-324c-4489-8dc7-df8caae53245"
-    // }
+    "extra": {
+      "eas": {
+        "projectId": "510c0558-010f-4755-bc2d-39eba18ab392"
+      }
+    },
+    "owner": "truong.nguyen1305",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/510c0558-010f-4755-bc2d-39eba18ab392"
+    }
   }
 }
